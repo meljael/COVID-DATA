@@ -13,12 +13,12 @@ prof Pablo Roberto.
 programa obtendo assim apenas o número de pessoas com o virús ativo. Além
 disso permite ao gestor ter uma previsão de como o virus se dessiminará ao 
 decorrer do tempo.
-
+---
 ## Linguagem:
 
   Todo o programa foi feito na linguagem c, que foi nos apresentada no
 começo do semestre pelo professor Paulo.
-
+---
 ## Assuntos Abordados:
 
 - [x] Estrutura de Decisão
@@ -28,7 +28,7 @@ começo do semestre pelo professor Paulo.
 - [x] Ponteiros
 - [x] Listas encadeadas
 - [x] Arquivos
-
+---
 ## Funcionalidades 
 
 - [x] Cadastrar
@@ -37,7 +37,7 @@ começo do semestre pelo professor Paulo.
 - [x] Listar
 - [x] Mostrar previsão
 - [x] Salvar em um arquivo
-
+---
 ## Equipe
 
 * Arthur Medeiros
