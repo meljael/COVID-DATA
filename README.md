@@ -1,4 +1,5 @@
 # COVID-DATA
+---
 ## Sobre:
 
     Esse projeto foi desenvolvido visando facilitar a coleta e envio de 
@@ -19,22 +20,22 @@ começo do semestre pelo professor Paulo.
 
 ## Assuntos Abordados:
 
-Estrutura de Decisão
-Estrutura de Repeticao
-String
-Struct
-Ponteiros
-Listas encadeadas
-Arquivos
+- [x] Estrutura de Decisão
+- [x] Estrutura de Repeticao
+- [x] String
+- [x] Struct
+- [x] Ponteiros
+- [x] Listas encadeadas
+- [x] Arquivos
 
 ## Funcionalidades 
 
-Cadastrar
-Pesquisar
-Remover
-Listar
-Mostrar previsão
-Salvar em um arquivo
+- [x] Cadastrar
+- [x] Pesquisar
+- [x] Remover
+- [x] Listar
+- [x] Mostrar previsão
+- [x] Salvar em um arquivo
 
 ## Equipe
 
