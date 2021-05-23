@@ -40,7 +40,7 @@ começo do semestre pelo professor Paulo.
 
 ## Equipe
 
-Arthur Medeiros
-Josimar Saldanha
-Meljael Daniel de Oliveira
+* Arthur Medeiros
+* Josimar Saldanha
+* Meljael Daniel de Oliveira
 
