@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <Windows.h>
+
 
 struct cadastro
 {
@@ -32,6 +34,7 @@ int infectados_zona(cadastro *l, char zona[10])
     }return cont;
 }
 //DÁ A PREVISÃO DA MELHOR E PIOR HIPÓTESE
+//PARA ILUSTRAR FIXAMOS UMA QUANTIDADE DE 1000 CASOS
 void PREVISAO(int casos, int vet[2])
 {   
     float taxa = 1.2; //TAXA DE TRANSMISSÃO APROXIMADA
@@ -52,7 +55,8 @@ cadastro *inserir(cadastro *l, char nome[10], char zona[10], int cpf)
         novo->proximo = NULL;
         return novo;
     }
-    int comp = strcmp(nome, l->nome);//CONDIÇÃO PARA ADICIONAR O ELEMENTO NO INICIO DA LISTA
+    int comp = strcmp(nome, l->nome);
+    //CONDIÇÃO PARA ADICIONAR O ELEMENTO NO INICIO DA LISTA
     if (comp <= 0)
     {
         novo->proximo = l;
@@ -97,6 +101,7 @@ void salvar_arquivo(cadastro *l, FILE *file)
 {
     cadastro *ponteiro = l;
     file  = fopen("Arquivo_covid.txt", "a");
+    //VERIFICA SE A LISTA ESTÁ VAZIA
     if(l != NULL)
     {
         while(ponteiro != NULL)
@@ -115,7 +120,7 @@ void salvar_arquivo(cadastro *l, FILE *file)
     }
 
 }
-//PESQUISA UM NÓ NA LISTA
+//PESQUISA UM NOME CADASTRADO NA LISTA
 void pesquisar(cadastro *l, char nome[10])
 {
     cadastro *ponteiro = l;
@@ -143,7 +148,7 @@ void pesquisar(cadastro *l, char nome[10])
         printf("\n---------------------------\n");
     }
 }
-//REMOVE UM NÓ DA LISTA
+//REMOVE UM NOME DA LISTA
 cadastro *remover(cadastro *l, char n[10])
 {
     if(l !=NULL)
@@ -151,14 +156,14 @@ cadastro *remover(cadastro *l, char n[10])
         cadastro *ponteiro = l, *aux = l;
         int comp = strcmp(ponteiro->nome, n);
         int i = 0;
-    
+        //LAÇO PARA ENCONTRAR A PESSOA A SER REMOVIDA
         while(ponteiro->proximo != NULL && comp != 0)
         {   
             if(i>0){aux = aux->proximo;}
             ponteiro = ponteiro->proximo;
             comp = strcmp(ponteiro->nome, n);
             i++;
-        }if(i == 0 && comp == 0)
+        }if(i == 0 && comp == 0)// REMOVE A PESSOA CASO ESTEJA NO INICIO DA LISTA
         {   
             l = aux->proximo ;
             free(aux);
@@ -167,7 +172,7 @@ cadastro *remover(cadastro *l, char n[10])
             printf("\n---------------------------\n");
             return l;
         }
-        if(ponteiro->proximo == NULL && comp == 0)
+        if(ponteiro->proximo == NULL && comp == 0)//REMOVE A PESSOA CASO ESTEJA NO FINAL DA LISTA
         {
             aux->proximo = NULL;
             free(ponteiro);
@@ -176,7 +181,7 @@ cadastro *remover(cadastro *l, char n[10])
             printf("\n---------------------------\n");
             return l;
         }
-        if(comp == 0)
+        if(comp == 0) //REMOVE A PESSOA CASO ELA ESTEJA NO FINAL DA LISTA
         {   
             aux->proximo = ponteiro->proximo;
             free(ponteiro);
@@ -200,15 +205,18 @@ cadastro *remover(cadastro *l, char n[10])
 int main(void)
 {   
     int resposta, cpf;
+    //ARRAY COM STRINGS PARA SER USADO MAIS A DIANTE NO PROGRAMA
     char z[4][10] = {"sul", "norte", "oeste", "leste"};
-    FILE *file;
 
+    FILE *file;
+    
     cadastro *lista;
     lista = criar(lista);
+
     while (resposta != -1)
     {   
         printf("\n--------------------------\n");
-        printf("\n ~~~~~~COVID MANAGER~~~~~~");
+        printf("\n   ~~~~~~COVID DATA~~~~~~");
         printf("\n         BEM VINDO\n");
         printf("--------------------------\n");
         printf("Defina o tipo de usuário\n");
@@ -237,11 +245,11 @@ int main(void)
                     printf("0 - ZONA SUL\n1 - ZONA NORTE\n2 - ZONA OESTE\n3 - ZONA LESTE\n");
                     scanf("%d", &resposta);
                     printf("\n--------------------------\n");
-                    if(resposta > 0 && resposta <5)
+                    if(resposta >= 0 && resposta <4)
                     {
                         int casos = infectados_zona(lista, z[resposta]);
                         int previsao[2];
-                        PREVISAO(casos, previsao);
+                        PREVISAO(1000, previsao);
                         printf("\n--------------------------\n");
                         printf("O numero de casos previstos é:\n %d infectados na melhor hipotese\n ", previsao[0]);
                         printf("%d infectados na pior hipotese \n", previsao[1]);
@@ -263,6 +271,8 @@ int main(void)
                     printf("\n----------------------\n");
                     printf("Voltando...\n");
                     printf("\n----------------------\n");
+                    Sleep(2000);
+                    system("cls");
                     break;
                 
                 default:
@@ -279,7 +289,7 @@ int main(void)
             while(resposta!=0)
             {   printf("\n----------------------\n");
                 printf("Bem Vindo! \n O que deseja fazer?\n");
-                printf("1 - CADASTRAR \n2 - REMOVER PESSOA\n3 - PESQUISAR  \n4 - LISTAR\n0 - VOLTAR\n");
+                printf("1 - CADASTRAR \n2 - REMOVER PESSOA\n3 - PESQUISAR  \n4 - LISTAR INFECTADOS\n0 - VOLTAR\n");
                 setbuf(stdin, NULL);
                 scanf("%d", &resposta);
                 printf("\n----------------------\n");
@@ -321,6 +331,8 @@ int main(void)
                     printf("\n----------------------\n");
                     printf("Voltando...");
                     printf("\n----------------------\n");
+                    Sleep(2000);
+                    system("cls");
                     break;
                 default:
                     printf("\n----------------------\n");
