@@ -314,7 +314,7 @@ int main(void)
                     break;
                 case 2:
                     printf("\n----------------------\n");
-                    printf("Quem você deseja remover: "); scanf("%s", &nome);
+                    printf("Quem você deseja remover: "); scanf("%s", nome);
                     lista = remover(lista, nome);
                     printf("\n----------------------\n");
                     break;
